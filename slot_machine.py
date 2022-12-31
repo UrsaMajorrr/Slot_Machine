@@ -59,6 +59,7 @@ def set_lines(balance, bet):
 
 # Print the slot machine
 def print_machine():
+    """Prints the slot machine with the symbols in a 3x3 format."""
     row = []
     copy_row = []
     for i in range(9):
@@ -75,6 +76,7 @@ def print_machine():
     return copy_row
 
 def get_symbol_value(symbol):
+    """Returns the symbol value that the bet is multiplied by."""
     for key, value in SYMBOL_VALUES.items():
         if key == symbol:
             return value
@@ -92,6 +94,7 @@ def check_winnings(rows, bet, balance):
     return balance
 
 def game(balance):
+    """This function contains the game logic"""
 
     bet = set_bet(balance)
     lines = set_lines(balance, bet)
