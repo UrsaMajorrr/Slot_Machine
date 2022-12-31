@@ -75,11 +75,13 @@ def print_machine():
 
     return copy_row
 
+
 def get_symbol_value(symbol):
     """Returns the symbol value that the bet is multiplied by."""
     for key, value in SYMBOL_VALUES.items():
         if key == symbol:
             return value
+
 
 # Check for wins, add winnings to deposit balance
 def check_winnings(rows, bet, balance):
@@ -92,6 +94,7 @@ def check_winnings(rows, bet, balance):
             balance += bet * get_symbol_value(symbol)
 
     return balance
+
 
 def game(balance):
     """This function contains the game logic"""
@@ -107,24 +110,31 @@ def game(balance):
 
     return new_balance
 
+
 def main():
     balance = set_balance()
     new_balance = game(balance)
 
-    query = input("Press q to quit, d to deposit more, or any other key to make another bet: ")
-    while query != 'q':
+    query = input(
+        "Press q to quit, d to deposit more, or any other key to make another bet: "
+    )
+    while query != "q":
         if new_balance < MIN_BET:
-            query = input(f"Balance below minimum bet (${MIN_BET}). Press q to quit or d to deposit more: ")
-            if query != 'q' or query != 'd':
+            query = input(
+                f"Balance below minimum bet (${MIN_BET}). Press q to quit or d to deposit more: "
+            )
+            if query != "q" or query != "d":
                 print("Can't bet more. Bye")
                 break
-        if query == 'd':
+        if query == "d":
             new_balance += set_balance()
             print(f"Your new balance is ${new_balance}")
             game(new_balance)
         else:
             game(new_balance)
-        query = input("Press q to quit, d to deposit more, or any other key to make another bet: ")
+        query = input(
+            "Press q to quit, d to deposit more, or any other key to make another bet: "
+        )
 
 
 if __name__ == "__main__":
