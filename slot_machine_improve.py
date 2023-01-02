@@ -135,7 +135,7 @@ def main():
             print(f"Your new balance is ${new_balance}")
             game(new_balance)
         else:
-            game(new_balance)
+            new_balance = game(new_balance)
         query = input(
             "Press q to quit, d to deposit more, or any other key to make another bet: "
         )
