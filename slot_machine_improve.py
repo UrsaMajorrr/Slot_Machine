@@ -123,7 +123,7 @@ def main():
         "Press q to quit, d to deposit more, or any other key to make another bet: "
     )
     while query != "q":
-        if new_balance < MIN_BET:
+        if new_balance < MIN_BET and query != "d":
             query = input(
                 f"Balance below minimum bet (${MIN_BET}). Press q to quit or d to deposit more: "
             )
@@ -133,7 +133,7 @@ def main():
         if query == "d":
             new_balance += maintain_balance()
             print(f"Your new balance is ${new_balance}")
-            game(new_balance)
+            new_balance = game(new_balance)
         else:
             new_balance = game(new_balance)
         query = input(
